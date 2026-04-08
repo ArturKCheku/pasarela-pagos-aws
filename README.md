@@ -34,7 +34,6 @@ CONFIGURACION Y DESPLIEGUE
 1. Despliegue de Infraestructura
 
 Desde la carpeta raíz, inicializa y aplica los planos de Terraform:
-Bash
 
     terraform init
     terraform plan
@@ -46,7 +45,19 @@ Nota: Asegúrate de tener tus credenciales de AWS configuradas y la llave públi
    
 Configura tu cliente WireGuard local usando la IP pública generada por el output de Terraform para establecer el túnel cifrado hacia la red 10.0.0.0/16.
 
-3. Ejecución de la API
+3. Acceso por SSH
+
+El acceso a las instancias se realiza exclusivamente mediante llave pública/privada. Una vez que el túnel VPN está activo, se puede acceder directamente a la instancia privada:
+
+Conexión a la Instancia de la API (Privada):
+
+    ssh -i ~/.ssh/clave_vpn_upv ubuntu@10.0.2.209
+
+Conexión al Servidor VPN (Pública) - Solo para mantenimiento:
+
+    ssh -i ~/.ssh/clave_vpn_upv ubuntu@<IP_PUBLICA_VPN>
+
+4. Ejecución de la API
 
 Una vez dentro de la instancia privada (10.0.2.209):
 Bash
@@ -61,7 +72,6 @@ La API cuenta con documentación automática generada por Swagger. Una vez conec
 Endpoint Principal: POST /pagar
 
 Cuerpo de la petición (JSON):
-JSON
 {
   "telefono": "600123456",
   "importe": 20.50,
