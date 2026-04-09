@@ -21,7 +21,7 @@ TECNOLOGIAS USADAS
 
   - Infraestructura: Terraform (IaC)
 
-  - Cloud: AWS (EC2, VPC, NAT Gateway, EIP)
+  - Cloud: AWS (EC2, VPC, NAT Gateway)
 
   - Seguridad: WireGuard VPN
 
